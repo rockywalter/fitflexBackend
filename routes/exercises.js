@@ -10,15 +10,12 @@ router.route('/').get((req, res) => {
 router.route('/searchexercises').get((req, res) => {
     const { goal, fitnessLevel} = req.query;
 
-  
-   
-
     const filter = {};
 
-    if (departure) {
+    if (goal) {
       filter.goal = goal;
     }
-    if (arrival) {
+    if (fitnessLevel) {
       filter.fitnessLevel = fitnessLevel;
     }
   
