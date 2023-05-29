@@ -7,45 +7,37 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// router.route('/searchflights').get((req, res) => {
-//     const { departure, arrival, dDate,aDate,cClass } = req.query;
+router.route('/searchexercises').get((req, res) => {
+    const { goal, fitnessLevel} = req.query;
 
   
    
 
-//     const filter = {};
+    const filter = {};
 
-//     if (departure) {
-//       filter.departure_destination = departure;
-//     }
-//     if (arrival) {
-//       filter.arrival_destination = arrival;
-//     }
-//     if (dDate) {
-//       filter.departure_date = dDate;
-//     }
-//     if (aDate) {
-//       filter.arrival_date = aDate;
-//     }
-//     if (cClass) {
-//       filter.cabin_class = cClass;
-//     }
+    if (departure) {
+      filter.goal = goal;
+    }
+    if (arrival) {
+      filter.fitnessLevel = fitnessLevel;
+    }
   
   
-//     async function fetchFlights() {
-//         try {
-//           const flights = await Flight.find(filter).exec();
-//           res.json(flights);
-//         } catch (error) {
-//           console.error('Error fetching flights:', error);
-//           res.status(500).json({ error: 'Internal Server Error' });
-//         }
-//       }
+  
+    async function fetchExercises() {
+        try {
+          const exercises = await Exercise.find(filter).exec();
+          res.json(exercises);
+        } catch (error) {
+          console.error('Error fetching exercises:', error);
+          res.status(500).json({ error: 'Internal Server Error' });
+        }
+      }
     
-//       fetchFlights();
+      fetchExercises();
 
 
-// });
+});
 
 router.route('/add').post((req, res) => {
   
